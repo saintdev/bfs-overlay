@@ -19,12 +19,22 @@ RESTRICT="primaryuri"
 DESCRIPTION="Full Gentoo sources including the Brainfuck Scheduler for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 
 TARGET_KV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
-BFS_SOURCE="${TARGET_KV}-sched-bfs-${BFS_VER}"
-BFS_URI="http://ck.kolivas.org/patches/bfs/${BFS_SOURCE}.patch"
+KV_PREFIX="${TARGET_KV}.14"
+URI_PREFIX="http://ck.kolivas.org/patches/bfs/${TARGET_KV}/${KV_PREFIX}"
+BFS_URIS="${URI_PREFIX}-sched-bfs-311.patch
+	${URI_PREFIX}-bfs311-bfs313.patch
+	${URI_PREFIX}-bfs-313-315.patch
+	${URI_PREFIX}-bfs-315-316.patch
+	${URI_PREFIX}-bfs-316-318.patch"
 
-UNIPATCH_LIST="${DISTDIR}/${BFS_SOURCE}.patch"
+PATCH_PREFIX="${DISTDIR}/${KV_PREFIX}"
+UNIPATCH_LIST="${PATCH_PREFIX}-sched-bfs-311.patch
+	${PATCH_PREFIX}-bfs311-bfs313.patch
+	${PATCH_PREFIX}-bfs-313-315.patch
+	${PATCH_PREFIX}-bfs-315-316.patch
+	${PATCH_PREFIX}-bfs-316-318.patch"
 
-SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${BFS_URI}"
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${BFS_URIS}"
 
 pkg_postinst() {
 	kernel-2_pkg_postinst
