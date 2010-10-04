@@ -4,7 +4,7 @@
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="6"
+K_GENPATCHES_VER="10"
 K_NOSETEXTRAVERSION="1"
 BFS_VER="${PV##*_p}"
 inherit kernel-2
@@ -19,7 +19,7 @@ RESTRICT="primaryuri"
 DESCRIPTION="Full Gentoo sources including the Brainfuck Scheduler for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 
 TARGET_KV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
-BFS_SOURCE="${TARGET_KV}-sched-bfs-${BFS_VER}"
+BFS_SOURCE="${TARGET_KV}.7-sched-bfs-${BFS_VER}"
 BFS_URI="http://ck.kolivas.org/patches/bfs/${TARGET_KV}/${BFS_SOURCE}.patch"
 
 UNIPATCH_LIST="${DISTDIR}/${BFS_SOURCE}.patch"
