@@ -5,19 +5,21 @@
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
 K_GENPATCHES_VER="2"
-K_NOSETEXTRAVERSION="1"
-BFS_VER="${PV##*_p}"
+K_DEBLOB_AVAILABLE="0"
+K_SECURITY_UNSUPPORTED="1"
+CKV="${PV/_p[0-9]*}"
 inherit kernel-2
 detect_version
 detect_arch
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE=""
-HOMEPAGE="http://dev.gentoo.org/~dsd/genpatches"
+HOMEPAGE="http://ck-hack.blogspot.com"
 RESTRICT="primaryuri"
 
 DESCRIPTION="Full Gentoo sources including the Brainfuck Scheduler for the ${KV_MAJOR}.${KV_MINOR} kernel tree"
 
+BFS_VER="${PV##*_p}"
 TARGET_KV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
 BFS_SOURCE="${TARGET_KV}-sched-bfs-${BFS_VER}"
 BFS_URI="http://ck.kolivas.org/patches/bfs/${TARGET_KV}/${BFS_SOURCE}.patch"
@@ -25,6 +27,10 @@ BFS_URI="http://ck.kolivas.org/patches/bfs/${TARGET_KV}/${BFS_SOURCE}.patch"
 UNIPATCH_LIST="${DISTDIR}/${BFS_SOURCE}.patch"
 
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${BFS_URI}"
+
+EXTRAVERSION="${PVR/#*_p/bfs}"
+KV_FULL="${PVR/_p/-bfs}"
+S="${WORKDIR}/linux-${KV_FULL}"
 
 pkg_postinst() {
 	kernel-2_pkg_postinst
