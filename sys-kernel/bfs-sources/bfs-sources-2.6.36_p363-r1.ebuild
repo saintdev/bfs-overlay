@@ -28,7 +28,7 @@ UNIPATCH_LIST="${DISTDIR}/${BFS_SOURCE}.patch"
 
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${BFS_URI}"
 
-EXTRAVERSION="${PVR/#*_p/bfs}"
+EXTRAVERSION="${PVR/#*_p/-bfs}"
 KV_FULL="${PVR/_p/-bfs}"
 S="${WORKDIR}/linux-${KV_FULL}"
 
