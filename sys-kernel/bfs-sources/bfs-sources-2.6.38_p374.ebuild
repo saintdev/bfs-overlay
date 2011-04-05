@@ -21,7 +21,7 @@ DESCRIPTION="Full Gentoo sources including the Brainfuck Scheduler for the ${KV_
 
 BFS_VER="${PV##*_p}"
 TARGET_KV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
-BFS_SOURCE="${TARGET_KV}-sched-bfs-${BFS_VER}"
+BFS_SOURCE="${TARGET_KV}.2-sched-bfs-${BFS_VER}"
 BFS_URI="http://ck.kolivas.org/patches/bfs/${TARGET_KV}/${BFS_SOURCE}.patch"
 
 UNIPATCH_LIST="${DISTDIR}/${BFS_SOURCE}.patch"
