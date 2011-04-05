@@ -7,7 +7,7 @@ K_WANT_GENPATCHES="base extras"
 K_GENPATCHES_VER="2"
 K_DEBLOB_AVAILABLE="0"
 K_SECURITY_UNSUPPORTED="1"
-CKV="${PV/_pre_p[0-9]*}"
+CKV="${PV/_p[0-9]*}"
 inherit kernel-2
 detect_version
 detect_arch
@@ -32,7 +32,7 @@ ${DISTDIR}/bfs${PRIMARY_VER}-${BFS_VER}-test.patch"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${BFS_URI}"
 
 EXTRAVERSION="${PVR/#*_p/-bfs}-test"
-KV_FULL="${PVR/_pre_p/-bfs}-test"
+KV_FULL="${PVR/_p/-bfs}-test"
 S="${WORKDIR}/linux-${KV_FULL}"
 
 pkg_postinst() {
